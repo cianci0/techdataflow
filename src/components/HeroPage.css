@@ -1,0 +1,53 @@
+.hero-page-root {
+  min-height: 100vh;
+  background: #7cfc00;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-page-image {
+  width: 100vw;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-page-content {
+  padding: 48px 5vw;
+  max-width: 90vw;
+  width: 100%;
+}
+
+.hero-page-headline {
+  font-family: Futura, "Futura-Bold", Arial, sans-serif;
+  font-weight: bold;
+  color: #7cfc00;
+  font-size: 4em;
+  margin: 0;
+  line-height: 1.1;
+  text-align: left;
+  letter-spacing: 0.08em;
+}
+
+.hero-page-subtitle {
+  font-family: Futura, "Futura-Medium", Arial, sans-serif;
+  font-weight: 500;
+  color: #7cfc00;
+  font-size: 2em;
+  margin: 16px 0 32px 0;
+  line-height: 1.2;
+  max-width: 700px;
+  text-align: left;
+  letter-spacing: 0.08em;
+}
+
+.hero-page-body {
+  font-family: Futura, Arial, sans-serif;
+  font-weight: 400;
+  color: #7cfc00;
+  font-size: 1.25em;
+  margin-bottom: 2rem;
+  text-align: left;
+  max-width: 700px;
+}

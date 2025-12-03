@@ -1,0 +1,21 @@
+.hero-section {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero-headline,
+.hero-subtitle,
+.hero-content,
+.hero-section {
+  text-shadow: none !important;
+}
+
+/* Also ensure buttons and other controls in hero have no text shadow */
+.hero-content button,
+.hero-content a,
+.Button,
+.Button * {
+  text-shadow: none !important;
+}

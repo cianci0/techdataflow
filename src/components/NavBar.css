@@ -1,0 +1,65 @@
+.tdf-navbar {
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 1vw;
+  height: 72px;
+  background: transparent;
+  box-shadow: 0 2px 8px rgba(2,21,44,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.tdf-navbar-left .tdf-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.tdf-navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.tdf-accordion {
+  position: relative;
+}
+
+.tdf-accordion-menu {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  background: #2152c;
+  border:none;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(2,21,44,0.08);
+  padding: 8px 0;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+}
+
+.tdf-accordion-link {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .tdf-navbar {
+    padding: 0 1vw;
+  }
+  .tdf-navbar-right {
+    gap: 8px;
+  }
+  .tdf-navbar-left .tdf-logo img {
+    height: 32px;
+  }
+}

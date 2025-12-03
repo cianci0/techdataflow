@@ -1,0 +1,16 @@
+.tdf-btn {
+  font-family: 'futura', Arial, sans-serif;
+  font-size: 1.1em;
+  padding: 0.7em 2em;
+  border-radius: none;
+  border: none;
+  background: #7cfc00;
+  color: #2152c;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0px;
+}
+.tdf-btn:hover,
+.tdf-btn:focus {
+  background: #7cfc00;
+}
