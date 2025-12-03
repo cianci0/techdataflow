@@ -62,7 +62,7 @@ const heroPages = [
 
 function LandingPage() {
   return (
-    <div className="App" style={{ padding: 0, margin: 0, fontFamily: 'Roboto, Arial, sans-serif', width: '100vw' }}>
+    <div className="App" style={{ padding: 0, margin: 0, fontFamily: 'Roboto, Arial, sans-serif', width: '100vw', minHeight: '100vh' }}>
       {heroPages.map((hero) => (
         <section
           key={hero.id}

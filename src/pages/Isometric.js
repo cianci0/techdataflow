@@ -208,8 +208,8 @@ export default function Isometric() {
       letterSpacing: '0.1em',
       }}
     >
-      <a href="mailto:info@creativeflow.com" style={{ color: '#7cfc00', textDecoration: 'underline' }}>
-      info@creativeflow.com
+      <a href="mailto:savatore.ciancio@thepoint.fi" style={{ color: '#7cfc00', textDecoration: 'underline' }}>
+      savatore.ciancio@thepoint.fi
       </a>
     </div>
     <Link to="/">

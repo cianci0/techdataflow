@@ -32,6 +32,13 @@
   letter-spacing: 0.05em;
 }
 
+
+@media (max-width: 599px) {
+  .hero-headline {
+    font-size: 3em;
+  }
+}
+
 .hero-subtitle {
   font-family: Futura, "Futura-Medium", Arial, sans-serif;
   font-weight: 500;

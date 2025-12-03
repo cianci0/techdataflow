@@ -1,6 +1,17 @@
 import React from 'react';
 
 export default function Footer() {
+  const [isNarrow, setIsNarrow] = React.useState(typeof window !== 'undefined' ? window.innerWidth < 968 : false);
+
+  React.useEffect(() => {
+    function onResize() {
+      setIsNarrow(typeof window !== 'undefined' ? window.innerWidth < 968 : false);
+    }
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   return (
     <footer
       style={{
@@ -27,44 +38,31 @@ export default function Footer() {
             justifyContent: 'space-between',
             alignItems: 'flex-start',
             flexWrap: 'wrap',
-            gap: '32px',
+            gap: '0px',
           }}
         >
           {/* Left column: Logo, address, contact */}
-          <div style={{ flex: 1, minWidth: 220, textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-            <div style={{ fontWeight: 'bold', fontSize: '1.3em', marginBottom: '18px' }}>
-              TECHDATAFLOW | <span style={{ color: '#fff' }}></span>THE POINT
-            </div>
-            <div style={{ fontSize: '1.4em', opacity: 0.8, marginBottom: '12px' }}>
-              Albertinkatu 29<br />
-              00180 Helsinki
-            </div>
-            <div style={{ fontSize: '1.4em' }}>
-              <a href="mailto:salvatore.ciancio@thepoint.fi" style={{ color: '#7cfc00', textDecoration: 'underline', fontSize: '1.1em' }}>
-                salvatore.ciancio@thepoint.fi
-              </a>
-            </div>
-          </div>
-          {/* Center column: Quick links horizontal */}
-          <div style={{
-            flex: 1,
-            minWidth: 220,
-            textAlign: 'left',
-            alignSelf: 'flex-start',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            gap: '32px',
-            paddingTop: '0',
-          }}>
-          </div>
+                <div style={{ flex: 1, minWidth: 220, textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                <div style={{ fontWeight: 'bold', fontSize: isNarrow ? '0.9em' : '1.2em', marginBottom: '18px' }}>
+                  TECHDATAFLOW | <span style={{ color: '#fff' }}></span>THE POINT
+                </div>
+                <div style={{ fontSize: isNarrow ? '0.9em' : '1.4em', opacity: 0.8, marginBottom: '12px' }}>
+                  Albertinkatu 29<br />
+                  00180 Helsinki
+                </div>
+                <div style={{ fontSize: isNarrow ? '0.9em' : '1.4em' }}>
+                  <a href="mailto:salvatore.ciancio@thepoint.fi" style={{ color: '#7cfc00', textDecoration: 'underline', fontSize: isNarrow ? '0.9em' : '1.1em' }}>
+                  salvatore.ciancio@thepoint.fi
+                  </a>
+                </div>
+                </div>
+ 
           {/* Right column: Social icons */}
           <div style={{
             flex: 0,
-            minWidth: 220,
+           minWidth: 120, 
             textAlign: 'right',
             alignSelf: 'flex-start',
-            display: '',
             flexDirection: 'row',
             gap: '24px',
             paddingTop: '0',
@@ -104,16 +102,18 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        {/* Copyright */}
-        <div style={{
-          marginTop: '32px',
-          fontSize: '1.3em',
-          letterSpacing: '0.04em',
-          textAlign: 'right',
-          opacity: 0.8,
-        }}>
-          &copy; {new Date().getFullYear()} TECHDATAFLOW | THE POINT | All rights reserved
-        </div>
+        {/* Copyright (hidden when window width < 820px) */}
+        {!isNarrow && (
+          <div style={{
+            marginTop: '32px',
+            fontSize: '1.3em',
+            letterSpacing: '0.04em',
+            textAlign: 'right',
+            opacity: 0.8,
+          }}>
+            &copy; {new Date().getFullYear()} TECHDATAFLOW | THE POINT | All rights reserved
+          </div>
+        )}
       </div>
     </footer>
   );

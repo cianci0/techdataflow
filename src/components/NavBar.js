@@ -27,6 +27,7 @@ const navBtnStyle = {
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const [atTop, setAtTop] = useState(true);
+  const [isWide, setIsWide] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => setAtTop(window.scrollY === 0);
@@ -35,22 +36,29 @@ export default function NavBar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => setIsWide(window.innerWidth >= 600);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const HoverButton = ({ children, style = {}, ...props }) => {
     const [hover, setHover] = useState(false);
     const baseOpacity = style.opacity != null ? style.opacity : 1;
     return (
       <Button
-      {...props}
-      style={{
-        ...style,
-        opacity: hover ? 1 : baseOpacity,
-        backgroundColor: hover ? '#7cfc00' : (style.backgroundColor || 'transparent'),
-        transition: 'opacity 150ms ease, background-color 150ms ease',
-      }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+        {...props}
+        style={{
+          ...style,
+          opacity: hover ? 1 : baseOpacity,
+          backgroundColor: hover ? '#7cfc00' : (style.backgroundColor || 'transparent'),
+          transition: 'opacity 150ms ease, background-color 150ms ease',
+        }}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
-      {children}
+        {children}
       </Button>
     );
   };
@@ -66,27 +74,29 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="tdf-navbar-right">
-        <div className="tdf-accordion">
-          <Button style={navBtnStyle} onClick={() => setOpen((o) => !o)}>
-            Pages
-          </Button>
-          {open && (
-            <div className="tdf-accordion-menu">
-              {heroPages.map(page => (
-                <Link
-                  key={page.id}
-                  to={page.path}
-                  className="tdf-accordion-link"
-                  onClick={() => setOpen(false)}
-                >
-                  <HoverButton style={{ ...navBtnStyle, height: '60px', margin: 0, opacity: 0.9, backgroundColor: 'white' }}>
-                    {page.label}
-                  </HoverButton>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
+        {isWide && (
+          <div className="tdf-accordion">
+            <Button style={navBtnStyle} onClick={() => setOpen((o) => !o)}>
+              Pages
+            </Button>
+            {open && (
+              <div className="tdf-accordion-menu">
+                {heroPages.map(page => (
+                  <Link
+                    key={page.id}
+                    to={page.path}
+                    className="tdf-accordion-link"
+                    onClick={() => setOpen(false)}
+                  >
+                    <HoverButton style={{ ...navBtnStyle, height: '60px', margin: 0, opacity: 0.9, backgroundColor: 'white' }}>
+                      {page.label}
+                    </HoverButton>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
         <Link to="/about">
           <Button style={navBtnStyle}>About Us</Button>
         </Link>
