@@ -13,7 +13,7 @@ export default function Abuot() {
             fontFamily: 'Futura, "Futura-Bold", Arial, sans-serif',
             fontWeight: 'bold',
             color: '#7cfc00',
-            fontSize: '4em',
+            fontSize: '3em',
             margin: 0,
             lineHeight: 1.1,
             textAlign: 'left',
@@ -71,7 +71,7 @@ export default function Abuot() {
             fontFamily: 'Futura, "Futura-Medium", Arial, sans-serif',
             fontWeight: 500,
             color: '#7cfc00',
-            fontSize: '1.6em',
+            fontSize: '1.6rem',
             margin: '0 0 32px 0',
             textAlign: 'left',
           }}

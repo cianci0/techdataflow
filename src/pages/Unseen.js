@@ -94,7 +94,7 @@ export default function Unseen() {
             fontFamily: 'Futura, "Futura-Medium", Arial, sans-serif',
             fontWeight: 500,
             color: '#7cfc00',
-            fontSize: '2em',
+            fontSize: '1em',
             margin: '0 0 32px 0',
             textAlign: 'left',
             letterSpacing: '0.1em',

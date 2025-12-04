@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Motion from './pages/Motion';
 import Alchemy from './pages/Alchemy';
 import Balance from './pages/Balance';
@@ -8,7 +8,7 @@ import Configuring from './pages/Configuring';
 import Isometric from './pages/Isometric';
 import NavBar from './components/NavBar';
 import Button from './components/Button';
-import Footer from './components/Footer'; // <-- Import Footer
+import Footer from './components/Footer';
 import About  from './pages/About';
 import './HeroSection.css';
 import './App.css';
@@ -19,7 +19,6 @@ const heroPages = [
     headline: 'Everything begins with motion',
     subtitle: 'Techadaflow, where creativity starts — in the mechanics of meaning',
     image: '/montaggio1ok.jpg',
-
     video: 'assets/motion/everything-start-with-motion-inside.mp4',
     path: '/motion',
   },
@@ -60,6 +59,15 @@ const heroPages = [
   },
 ];
 
+// ScrollToTop component: scrolls to top on every location change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [pathname]);
+  return null;
+}
+
 function LandingPage() {
   return (
     <div className="App" style={{ padding: 0, margin: 0, fontFamily: 'Roboto, Arial, sans-serif', width: '100vw', minHeight: '100vh' }}>
@@ -98,12 +106,12 @@ function LandingPage() {
               zIndex: 1,
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'flex-start', // keep stacked and left-aligned
+              alignItems: 'flex-start',
             }}
           >
             <h2
               style={{
-                display: 'inline-block', // shrink-wrap to text width
+                display: 'inline-block',
                 padding: 16,
                 backgroundColor: 'rgba(2, 21, 44, 0.5)',
                 margin: 0,
@@ -114,7 +122,7 @@ function LandingPage() {
             </h2>
             <p
               style={{
-                display: 'inline-block', // shrink-wrap to text width
+                display: 'inline-block',
                 marginTop: '16px',
                 padding: 8,
                 paddingLeft: 16,
@@ -137,6 +145,7 @@ function LandingPage() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -147,9 +156,8 @@ function App() {
         <Route path="/configuring" element={<Configuring />} />
         <Route path="/isometric" element={<Isometric />} />
         <Route path="/about" element={<About />} />
-        {/* About Us page can be added here in the future */}
       </Routes>
-      <Footer /> {/* Footer appears on all pages */}
+      <Footer />
     </Router>
   );
 }
